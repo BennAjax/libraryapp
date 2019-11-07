@@ -7,6 +7,7 @@
   const path = require('path');
   const cookieParser = require('cookie-parser');
   const logger = require('morgan');
+  const mongoose = require('mongoose');
 
 
   const indexRouter = require('./routes/index');
@@ -14,6 +15,14 @@
 
   const app = express();
 
+  // initialize mongodb connection with mongoose
+  mongoose.Promise = global.Promise; // Not needed for mongoose v5 upwards
+  mongoose.connect('mongodb://localhost:27017/soccerhub', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    autoIndex: false,
+  }).then(() => { console.log('Successfully connected to MongoDb')}) .catch(error => console.log('Could not connect to MongoDb'));
+  
   // view engine setup
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'ejs');
