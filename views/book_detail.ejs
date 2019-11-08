@@ -1,0 +1,28 @@
+<%- include('layouts/header'); %>
+
+    <h1><%= title %></h1>
+    <p><strong>Author:</strong><a href="<%= book.author.url%>"> <%= book.author.name%></a></p>
+    <p><strong>Summary:</strong><%= book.summary%></p>
+    <p><strong>ISBN:</strong> <%= book.isbn %></p>
+    <p>
+        <strong>Book Genre:</strong>
+        <% book.genre.forEach(function (value, index) { %>
+            <a href="<%= value.url%>"><%= value.name%></a>
+            <% if (index < book.genre.length -1)%>, <%;%> <!--add commas to the list of genre -->
+        <%});%>
+    </p>
+    <div style='margin-left:20px;margin-top:20px'>
+        <h4>Copies</h4>
+        <% book_instances.forEach(function (value) { %> <hr>
+            <%if(value.status == 'Available') { %> <p class="text-success"><%= value.status; %></p>
+            <%} else if (value.status == 'Maintenance') { %><p class="text-danger"><%= value.status; %></p>
+            <%} else {%> <p class="text-warning"><%= value.status; %></p> <%}%>
+            <p><strong>Imprint:</strong> <%= value.imprint %></p>
+            <% if(value.status == 'Available')%> <p><strong>Due Back:</strong> <%=value.due_back;%> </p>
+            <p><strong>ID: </strong><a href="<%=value.url%>"><%= value._id%></a> </p>
+        <%});%>
+    </div>
+
+
+
+<%- include('layouts/footer'); %>

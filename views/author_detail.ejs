@@ -1,0 +1,18 @@
+<%- include('layouts/header'); %>
+
+    <h1><%= author.name %></h1>
+    <p><%= author.date_of_birth %> - <%= author.date_of_death %></p>
+    <div style='margin-left:20px;margin-top:20px'>
+        <h4> Books</h4>
+        <dl>
+            <% author_books.forEach(function (book) {%>
+                <dt><a href="<%= book.url %>"><%= book.title %></a></dt>
+                <dd><%= book.summary%></dd>
+                <br>
+            <%});%>
+        </dl>
+
+    </div>
+
+
+<%- include('layouts/footer'); %>

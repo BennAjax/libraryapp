@@ -1,0 +1,18 @@
+<%- include('layouts/header'); %>
+
+    <h1><%= genre.name %></h1>
+
+    <div style='margin-left:20px;margin-top:20px'>
+        <h4> Books</h4>
+        <dl>
+            <% genre_books.forEach(function (book) {%>
+                <dt><a href="<%= book.url %>"><%= book.title %></a></dt>
+                <dd><%= book.summary%></dd>
+                <br>
+            <%});%>
+        </dl>
+
+    </div>
+
+
+<%- include('layouts/footer'); %>
