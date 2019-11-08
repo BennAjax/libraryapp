@@ -17,12 +17,12 @@
 
   // initialize mongodb connection with mongoose
   mongoose.Promise = global.Promise; // Not needed for mongoose v5 upwards
-  mongoose.connect('mongodb://localhost:27017/soccerhub', {
+  mongoose.connect('mongodb://localhost:27017/libraryapp', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     autoIndex: false,
   }).then(() => { console.log('Successfully connected to MongoDb')}) .catch(error => console.log('Could not connect to MongoDb'));
-  
+
   // view engine setup
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'ejs');
