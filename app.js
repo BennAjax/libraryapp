@@ -18,11 +18,11 @@
 
   // initialize mongodb connection with mongoose
   mongoose.Promise = global.Promise; // Not needed for mongoose v5 upwards
-  mongoose.connect('mongodb://localhost:27017/libraryapp', {
+  mongoose.connect('mongodb+srv://phpfun:fundevelopment22@cluster0-epdbc.azure.mongodb.net/local_library?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     autoIndex: false,
-  }).then(() => { console.log('Successfully connected to MongoDb')}) .catch(error => console.log('Could not connect to MongoDb'));
+  }).then(() => { console.log('Successfully connected to MongoDb')}) .catch(error => console.log('Could not connect to MongoDb\n' + error));
 
   // view engine setup
   app.set('views', path.join(__dirname, 'views'));
